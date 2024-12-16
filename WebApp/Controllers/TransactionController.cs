@@ -15,33 +15,33 @@ namespace Controllers;
 public class TransactionController(ITransactionService TransactionService):ControllerBase
 {
     [HttpGet]
-    public Response<List<Transaction>> GetResponses()
+    public async Task<Response<List<Transaction>>> GetResponses()
     {
         var response=TransactionService.GetTransactions();
-        return response;
+        return await response;
     }
     [HttpPost]
-    public Response<bool> AddTransaction(Transaction transaction)
+    public async Task<Response<bool>> AddTransaction(Transaction transaction)
     {
         var response=TransactionService.AddTransaction(transaction);
-        return response;
+        return await response;
     }
     [HttpPut]
-    public Response<bool> Update(Transaction transaction)
+    public async Task<Response<bool>> Update(Transaction transaction)
     {
         var response=TransactionService.UpdateTransaction(transaction);
-        return response;
+        return await response;
     }
     [HttpDelete]
-    public Response<bool> Delete(int id)
+    public async Task<Response<bool>> Delete(int id)
     {
         var response=TransactionService.DeleteTransaction(id);
-        return response;
+        return await response;
     }
     [HttpGet ("get-by-id")]
-    public Response<Transaction> GetById(int id)
+    public async Task<Response<Transaction>> GetById(int id)
     {
         var response=TransactionService.GetTransactionById(id);
-        return response;
+        return await response;
     }
 }

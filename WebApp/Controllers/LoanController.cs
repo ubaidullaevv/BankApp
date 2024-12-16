@@ -15,39 +15,39 @@ namespace Controllers;
 public class LoanController(ILoanService LoanService):ControllerBase
 {
     [HttpGet]
-    public Response<List<Loan>> GetResponses()
+    public async Task<Response<List<Loan>>> GetResponses()
     {
         var response=LoanService.GetLoans();
-        return response;
+        return await response;
     }
     [HttpPost]
-    public Response<bool> AddLoan(Loan loan)
+    public async Task<Response<bool>> AddLoan(Loan loan)
     {
         var response=LoanService.AddLoan(loan);
-        return response;
+        return await response;
     }
     [HttpPut]
-    public Response<bool> Update(Loan loan)
+    public async Task<Response<bool>> Update(Loan loan)
     {
         var response=LoanService.UpdateLoan(loan);
-        return response;
+        return await response;
     }
     [HttpDelete]
-    public Response<bool> Delete(int id)
+    public async Task<Response<bool>> Delete(int id)
     {
         var response=LoanService.DeleteLoan(id);
-        return response;
+        return await response;
     }
     [HttpGet ("get-by-id")]
-    public Response<Loan> GetById(int id)
+    public async Task<Response<Loan>> GetById(int id)
     {
         var response=LoanService.GetLoanById(id);
-        return response;
+        return await response;
     }
     [HttpPost("amount-limit")]
-    public Response<bool> AmountLimit(Loan loan)
+    public async Task<Response<bool>> AmountLimit(Loan loan)
     {
         var response=LoanService.AmountLimit(loan);
-        return response;
+        return await response;
     }
 }

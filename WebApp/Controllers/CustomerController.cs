@@ -15,46 +15,46 @@ namespace Controllers;
 public class CustomerController(ICustomerService customerService):ControllerBase
 {
     [HttpGet]
-    public Response<List<Customer>> GetResponses()
+    public async Task<Response<List<Customer>>> GetResponses()
     {
         var response=customerService.GetCustomers();
-        return response;
+        return await response;
     }
     [HttpPost]
-    public Response<bool> AddCustomer(Customer Customer)
+    public async Task<Response<bool>> AddCustomer(Customer Customer)
     {
         var response=customerService.AddCustomer(Customer);
-        return response;
+        return await response;
     }
     [HttpPut]
-    public Response<bool> Update(Customer Customer)
+    public async Task<Response<bool>> Update(Customer Customer)
     {
         var response=customerService.UpdateCustomer(Customer);
-        return response;
+        return await response;
     }
     [HttpDelete]
-    public Response<bool> Delete(int id)
+    public async Task<Response<bool>> Delete(int id)
     {
         var response=customerService.DeleteCustomer(id);
-        return response;
+        return await response;
     }
     [HttpGet ("get-by-id")]
-    public Response<Customer> GetById(int id)
+    public async Task<Response<Customer>> GetById(int id)
     {
         var response=customerService.GetCustomerById(id);
-        return response;
+        return await response;
     }
     [HttpPost("ckeck-age")]
-    public Response<bool> CheckAge(Customer customer)
+    public async Task<Response<bool>> CheckAge(Customer customer)
     {
         var response=customerService.CheckAge(customer);
-        return response;
+        return await response;
     }
 
         [HttpGet("get-by-city")]
-    public Response<List<Customer>> GetCustomersByCity(string city)
+    public async Task<Response<List<Customer>>> GetCustomersByCity(string city)
     {
         var response=customerService.GetCustomersByCity(city);
-        return response;
+        return await response;
     }
 }

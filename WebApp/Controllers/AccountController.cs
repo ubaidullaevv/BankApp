@@ -15,34 +15,34 @@ namespace Controllers;
 public class AccountController(IAccountService AccountService):ControllerBase
 {
     [HttpGet]
-    public Response<List<Account>> GetResponses()
+    public async  Task<Response<List<Account>>> GetResponses()
     {
         var response=AccountService.GetAccounts();
-        return response;
+        return await response;
     }
     [HttpPost]
-    public Response<bool> AddAccount(Account account)
+    public async Task<Response<bool>> AddAccount(Account account)
     {
         var response=AccountService.AddAccount(account);
-        return response;
+        return await response;
     }
     [HttpPut]
-    public Response<bool> Update(Account account)
+    public async Task<Response<bool>> Update(Account account)
     {
         var response=AccountService.UpdateAccount(account);
-        return response;
+        return await response;
     }
     [HttpDelete]
-    public Response<bool> Delete(int id)
+    public async Task<Response<bool>> Delete(int id)
     {
         var response=AccountService.DeleteAccount(id);
-        return response;
+        return await response;
     }
     [HttpGet ("get-by-id")]
-    public Response<Account> GetById(int id)
+    public async Task<Response<Account>> GetById(int id)
     {
         var response=AccountService.GetAccountById(id);
-        return response;
+        return await response;
     }
 
     // [HttpPut("update-status")]

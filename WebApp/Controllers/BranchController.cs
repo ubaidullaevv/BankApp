@@ -15,33 +15,33 @@ namespace Controllers;
 public class BranchController(IBranchService BranchService):ControllerBase
 {
     [HttpGet]
-    public Response<List<Branch>> GetResponses()
+    public async Task<Response<List<Branch>>> GetResponses()
     {
-        var response=BranchService.GetBranchs();
-        return response;
+        var response=BranchService.GetBranches();
+        return await response;
     }
     [HttpPost]
-    public Response<bool> AddBranch(Branch branch)
+    public async Task<Response<bool>> AddBranch(Branch branch)
     {
         var response=BranchService.AddBranch(branch);
-        return response;
+        return await response;
     }
     [HttpPut]
-    public Response<bool> Update(Branch branch)
+    public async Task<Response<bool>> Update(Branch branch)
     {
         var response=BranchService.UpdateBranch(branch);
-        return response;
+        return await response;
     }
     [HttpDelete]
-    public Response<bool> Delete(int id)
+    public async Task<Response<bool>> Delete(int id)
     {
         var response=BranchService.DeleteBranch(id);
-        return response;
+        return await response;
     }
     [HttpGet ("get-by-id")]
-    public Response<Branch> GetById(int id)
+    public async Task<Response<Branch>> GetById(int id)
     {
         var response=BranchService.GetBranchById(id);
-        return response;
+        return await response;
     }
 }
